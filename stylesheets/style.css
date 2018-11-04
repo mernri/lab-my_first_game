@@ -1,6 +1,7 @@
 html {
     background: url("../images/background.jpg") no-repeat;
     background-size: cover;
+    opacity: 0.9;
     font-family: "Helvetica Neue", Arial, sans-serif;
   }
 
@@ -20,7 +21,6 @@ html {
   border: 1px solid black;
   display: inline-block;
   background-color: #c5d6e1;
-
 }
 
 
