@@ -23,10 +23,6 @@ html {
   background-color: #c5d6e1;
 }
 
-.used {
-  background-color: blue;
-}   
-
 
 .bomb {
   background-image: url("../images/bomb-image.png");
@@ -46,3 +42,10 @@ html {
   background-position: center;
 }
 
+.used {
+  background-color: blue;
+}   
+
+.free {
+  
+}
