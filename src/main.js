@@ -1,13 +1,12 @@
 // cases
 var bomb = "bomb";
 
-var startPoint = "startPoint";
+var light = "light";
 
-var endPoint = "endPoint"
 
 var board = [
   [0, 0, 0, bomb, bomb],
-  [startPoint, 0, 0, bomb, endPoint],
+  [light, 0, 0, bomb, light],
   [bomb, 0, bomb, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, bomb, 0]
@@ -16,7 +15,6 @@ var board = [
 
 $(document).ready(function(){
   matrixCreate(board);
-
 })
 
 
@@ -28,22 +26,14 @@ function matrixCreate (board) {
     $("#game_board").append(row);
     for (var j= 0; j < board[i].length; j++){
       var cell = $('<div class="cell ' + board[i][j] +'"> </div>');
-      // if (board[i][j] === bomb) {
-      //   cell.addClass("bombInit");
-      // }
       row.append(cell);
-    } 
+      // hide bombs after 5sec
+      if (cell.hasClass("bomb")){
+        setTimeout(function(){
+          $(".cell").removeClass("bomb");         
+        }, 2000);
+      }
+
+    }
   }
 }
-
-
-
-/*
-//  celulle (3,4) ==> matrix[2][3]
-function getPosition(matrix, [row,column]) {
-    var r= row-1;
-    var c= column-1;
-    return matrix[r][c];
-  };
-
-*/

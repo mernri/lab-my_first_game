@@ -19,23 +19,23 @@ html {
   padding: 0px;
   border: 1px solid black;
   display: inline-block;
+  background-color: #c5d6e1;
+
 }
 
 
 .bomb {
-
-}
-
-#game_board.init .bomb  {
   background-image: url("../images/bomb-image.png");
+  background-size: 50px;  
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
-.startPoint {
+.light {
   background-image: url("../images/start-point.png");
+  background-size: 100px;
+  background-position: center;
 
 }
 
-.endPoint {
-  background-image: url("../images/end-point.png");
-
-}
