@@ -1,0 +1,41 @@
+html {
+    background: url("../images/background.jpg") no-repeat;
+    background-size: cover;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+#game_board {
+    background:#ffffff;
+    width:510px;
+    height:510px;
+    margin:0px auto;
+    box-shadow: inset 0px 0px 20px -6px rgba(97,89,97,1);
+  }
+
+.cell {
+  height: 100px;
+  width: 100px;
+  margin : 0px;
+  padding: 0px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+
+.bomb {
+
+}
+
+#game_board.init .bomb  {
+  background-image: url("../images/bomb-image.png");
+}
+
+.startPoint {
+  background-image: url("../images/start-point.png");
+
+}
+
+.endPoint {
+  background-image: url("../images/end-point.png");
+
+}
