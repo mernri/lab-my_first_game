@@ -23,6 +23,10 @@ html {
   background-color: #c5d6e1;
 }
 
+.used {
+  background-color: blue;
+}   
+
 
 .bomb {
   background-image: url("../images/bomb-image.png");
@@ -37,6 +41,7 @@ html {
 
 .light {
   background-image: url("../images/start-point.png");
+  background-color: #0131E7;
   background-size: 100px;
   background-position: center;
 }
