@@ -17,9 +17,8 @@ $(document).ready(function(){
   matrixCreate(board);
 })
 
+//__________ CREATE A MATRIX WITH BOMBS, END/START POINTS ___________________
 
-
-// fonction pour faire apparaître le tableau associé à l'array "board"
 function matrixCreate (board) {
   for (var i= 0; i < board.length; i++){
     var row = $("<div></div>");
@@ -28,21 +27,19 @@ function matrixCreate (board) {
       var cell = $('<div class="cell ' + board[i][j] +'"> </div>');
       row.append(cell);
       
-      // show lights after 5sec : PROBLEM HERE => DOESN'T WORK
-      if (cell.hasClass("cell light")){
-        $(".light").toggle();
-        setTimeout(function() {
-          $(".light").toggle();
-        }, 2000);
-      }
+      // // show lights after 5sec : PROBLEM HERE => TOGGLE NOT WORKING
+      // if (cell.hasClass("light")){
+      //   setTimeout(function() {
+      //     $(".light").addClass("hidden");
+      //   }, 2000);
+      // }
 
       // hide bombs after 5sec
-      if (cell.hasClass("cell bomb")){
+      if (cell.hasClass("bomb")){
         setTimeout(function(){
-          $(".cell").removeClass("bomb");         
-        }, 2000);
+          $(".bomb").addClass("hidden");         
+        }, 3000);
       }
-
     }
   }
 }

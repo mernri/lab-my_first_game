@@ -29,13 +29,15 @@ html {
   background-size: 50px;  
   background-repeat: no-repeat;
   background-position: center;
+}
 
+.hidden {
+  background-image: none;
 }
 
 .light {
   background-image: url("../images/start-point.png");
   background-size: 100px;
   background-position: center;
-
 }
 
