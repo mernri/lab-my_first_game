@@ -32,7 +32,8 @@ html {
 }
 
 .explosion {
-  background-image: url("../images/explosion2.gif")!important;  
+  background-image: url("../images/explosion2.gif")!important;
+  background-color: red!important;
   background-size: 80px;  
   background-repeat: no-repeat;
   background-position: center;
@@ -54,6 +55,7 @@ html {
   background-image: url("../images/end-point.png");
   background-size: 100px;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .bomb.used {

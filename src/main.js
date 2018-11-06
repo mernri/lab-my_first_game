@@ -12,8 +12,8 @@ var board = [
 ];
 
 $(document).ready(function() {
+  // CREATE THE MATRIX with bombs and lights
   matrixCreate(board);
-
   // HOW TO MOVE
   document.onkeydown = function(key) {
     if (!$(".light").hasClass("used")) {
@@ -38,9 +38,8 @@ $(document).ready(function() {
 
     // MOVES DISABLES IF THE GAME ENDS
     if ($(".light").hasClass("used")) {
-      alert("partie terminée!");
-      // moves not possible
       checkPath();
+      alert("partie terminée!");
     }
   };
 });
