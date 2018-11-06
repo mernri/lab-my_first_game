@@ -31,21 +31,43 @@ html {
   background-position: center;
 }
 
+.explosion {
+  background-image: url("../images/explosion2.gif")!important;  
+  background-size: 80px;  
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.all-red {
+  background-color: red!important;
+}
+
+.all-green {
+  background-color: green!important;
+} 
+
 .hidden {
-  background-image: none;
+  background-color: #c5d6e1!important;
+  background-image: none!important;
 }
 
 .light {
-  background-image: url("../images/start-point.png");
-  background-color: #0131E7;
+  background-image: url("../images/end-point.png");
   background-size: 100px;
   background-position: center;
 }
 
+.bomb.used {
+  background-color: blue!important;
+  background-image: url("../images/start-point.png");
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .used {
   background-color: blue;
+  background-image: url("../images/start-point.png");
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
 }   
-
-.free {
-  
-}
