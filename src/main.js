@@ -2,6 +2,7 @@
 var bomb = "bomb";
 var light = "light";
 var free = "free";
+var scorePlayer= 0;
 
 var board = [
   [free, free, free, bomb, bomb],
@@ -39,7 +40,6 @@ $(document).ready(function() {
     // MOVES DISABLES IF THE GAME ENDS
     if ($(".light").hasClass("used")) {
       checkPath();
-      alert("partie terminée!");
     }
   };
 });
@@ -61,12 +61,12 @@ var matrixCreate = board => {
     $(".light").addClass("hidden");
     setTimeout(function() {
       $(".light").removeClass("hidden");
-    }, 3000);
+    }, 2000);
 
     // hide bombs after 5sec
     setTimeout(function() {
       $(".bomb").addClass("hidden");
-    }, 3000);
+    }, 2000);
   }
 };
 
@@ -81,7 +81,7 @@ var moveLeft = key => (j > 0 ? (j -= 1) : j);
 var moveUp = key => (i > 0 ? (i -= 1) : i);
 var moveDown = key => (i < 4 ? (i += 1) : i);
 
-// _____________ CHECKING IF THE PATH WAS PERILOUS __________________
+// _____________ CHECKING IF THE PATH WAS PERILOUS OR NOT__________________
 
 function checkPath() {
   // if perilous => show the bombs used
@@ -96,6 +96,9 @@ function checkPath() {
     $(".used")
       .removeClass("used")
       .addClass("all-red");
+    // Show the loser popup
+    $(".popup, .popup-content").addClass("active");
+    endMatch();
   }
   // if not perilous => all green
   else {
@@ -108,5 +111,31 @@ function checkPath() {
       .removeClass("used")
       .addClass("all-green");
     $(".bomb").removeClass("hidden");
+    // edit the score
+    scorePlayer= scorePlayer + 1;
+    var cell= $("#score-player");
+    cell.text(scorePlayer);
+    // show the winner popup
+    var contentText= $(".title");
+    var contentGif= $(".gif");
+    var contentButton= $("button");
+    contentGif.attr("src", 'https://giphy.com/embed/3o7bu57lYhUEFiYDSM');
+    contentText.text("Winner popup");
+    contentButton.text("I am a winner");
+    $(".popup, .popup-content").addClass("active");
+    endMatch();
   }
+}
+
+/*_____________________TARTING ENDING A MATCH_____________________ */
+function endMatch() {
+  // afficher une popup (winner ou loser)
+  $(".close").on("click", function(){
+    $(".popup, .popup-content").removeClass("active");
+  });
+  
+
+  // si le nombre de tableau joués est 5 = annonce le gagnant
+
+  // si le nombre de tableaux joués est < 5 = afficher un nouveau tableau
 }

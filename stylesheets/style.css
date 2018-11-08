@@ -3,7 +3,13 @@ html {
     background-size: cover;
     opacity: 0.9;
     font-family: "Helvetica Neue", Arial, sans-serif;
+    justify-items: center;
   }
+
+.header {
+  margin: auto;
+  width: 15%;
+}
 
 #game_board {
     background:#ffffff;
@@ -73,3 +79,50 @@ html {
   background-position: center;
   background-repeat: no-repeat;
 }   
+
+
+/* _________________ POPUP STYLE __________________________*/
+.popup {
+  visibility:hidden;
+  background-color: #FFFFFF;
+  border: 1px solid grey;
+  align-items: center;  
+  width:400px;
+  height:350px;
+  left:35%; 
+  position: absolute;
+  border-radius: 15px;
+  margin-top: 150px;
+}
+
+.popup.active {
+  visibility:visible;
+  text-align:center;
+}
+
+.popup-content {
+ visibility:hidden;
+ padding: 20px;
+}
+
+.popup-content.active {
+  visibility:visible;
+}
+
+button {
+  display:inline-block;
+  vertical-align:middle;
+  border-radius:30px;
+  margin: 10px;;
+  padding: 10px;
+  font-size: 12px;
+  color:#666666;
+  background:	#ffffff;
+  border:1px solid #666666; 
+}
+
+button:hover{
+  border:1px solid #666666;
+  background:#666666;
+  color:#ffffff;
+}
