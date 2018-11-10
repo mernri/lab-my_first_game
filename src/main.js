@@ -2,10 +2,9 @@
 var bomb = "bomb";
 var light = "light";
 var free = "free";
-var scorePlayer = 0;
-var nbMatch = 0;
 var currentPlayer = 1;
-
+var scoreCell = $("#score-player1");
+var score = 0;
 
 var board = [
   [free, free, free, bomb, bomb],
@@ -40,7 +39,7 @@ $(document).ready(function() {
     var cell = $(".row-" + i + ".col-" + j);
     cell.addClass("used").removeClass("hidden");
 
-    // MOVES DISABLES IF THE GAME ENDS
+    // CHECK THE PATH AT THE END OF A MATCH
     if ($(".light").hasClass("used")) {
       checkPath();
     }
@@ -85,72 +84,77 @@ var moveUp = key => (i > 0 ? (i -= 1) : i);
 var moveDown = key => (i < 4 ? (i += 1) : i);
 
 // _____________ CHECKING IF THE PATH WAS PERILOUS OR NOT__________________
+function youLose() {
+  $(".bomb.used")
+    .removeClass("used")
+    .addClass("explosion");
+  $(".bomb").removeClass("hidden");
+  $(".light")
+    .removeClass("light")
+    .addClass("all-red");
+  $(".used")
+    .removeClass("used")
+    .addClass("all-red");
+  // Show the loser popup
+  setTimeout(function() {
+    $(".popup, .popup-content").addClass("active");
+  }, 1000);
+}
+
+function youWin() {
+  $(".light")
+    .removeClass("light")
+    .removeClass("used")
+    .addClass("all-green");
+  $(".used")
+    .removeClass("light")
+    .removeClass("used")
+    .addClass("all-green");
+  $(".bomb").removeClass("hidden");
+  // edit the score
+  score = score + 1;
+  scoreCell.text(score);
+  // show the winner popup
+  var contentText = $(".title");
+  var contentGif = $(".gif");
+  var contentButton = $("button");
+  contentGif.attr("src", "https://giphy.com/embed/3o7bu57lYhUEFiYDSM");
+  contentText.text("Winner popup");
+  contentButton.text("I am a winner");
+  setTimeout(function() {
+    $(".popup, .popup-content").addClass("active");
+  }, 1000);
+}
 
 function checkPath() {
-  // IF PERILOUS => show the bombs used
+  // Check if perilous or not
   if ($(".bomb").hasClass("used")) {
-    $(".bomb.used")
-      .removeClass("used")
-      .addClass("explosion");
-    $(".bomb").removeClass("hidden");
-    $(".light")
-      .removeClass("light")
-      .addClass("all-red");
-    $(".used")
-      .removeClass("used")
-      .addClass("all-red");
-    // Show the loser popup
-    setTimeout(function() {
-      $(".popup, .popup-content").addClass("active");
-    }, 1000);
+    youLose();
+  } else {
+    youWin();
   }
-  // IF SAFE  => all green
-  else {
-    $(".light")
-      .removeClass("light")
-      .removeClass("used")
-      .addClass("all-green");
-    $(".used")
-      .removeClass("light")
-      .removeClass("used")
-      .addClass("all-green");
-    $(".bomb").removeClass("hidden");
-    // edit the score
-    scorePlayer = scorePlayer + 1;
-    var cell = $("#score-player");
-    cell.text(scorePlayer);
-    // show the winner popup
-    var contentText = $(".title");
-    var contentGif = $(".gif");
-    var contentButton = $("button");
-    contentGif.attr("src", "https://giphy.com/embed/3o7bu57lYhUEFiYDSM");
-    contentText.text("Winner popup");
-    contentButton.text("I am a winner");
-    setTimeout(function() {
-      $(".popup, .popup-content").addClass("active");
-    }, 1000);
-  }
-  // Fermer la popup
+  // Close the popup
   $(".close").on("click", function() {
     $(".popup, .popup-content").removeClass("active");
+    switchPlayer();
   });
-  nbMatch = nbMatch + 1;
-  nextMatch();
 }
 
-/*_____________________STARTING ENDING A MATCH_____________________ */
-function nextMatch() {
-  if (nbMatch > 10) {
-    alert("the winner is one of the 2 players. Deal with it.")
-  } 
-  else {
-    (currentPlayer === 1 ? currentPlayer = 2 : currentPlayer = 1);
+/*_____________________SWITCH PLAYER_____________________ */
+function switchPlayer() {
+  i = 1;
+  j = 0;
+  position = board[i][j];
+
+  if (currentPlayer === 1) {
+    currentPlayer = 2;
+    scoreCell = $("#score-player2");
+    $("#game_board").empty();
+    matrixCreate(board);
+  } else {
+    currentPlayer = 1;
+    scoreCell = $("#score-player1");
+    $("#game_board").empty();
+    matrixCreate(board);
   }
 }
-
-/* 2 joueurs : 
-
-- var current player 
-si player 1 qui vient de jouer et a terminé alors redessine le jeu et mon current player devient player 2 et donc c'est le score de current player qui doit être incrémenté. 
-
-*/
