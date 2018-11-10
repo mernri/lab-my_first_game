@@ -97,6 +97,13 @@ function youLose() {
     .removeClass("used")
     .addClass("all-red");
   // Show the loser popup
+  var contentText = $(".title");
+  var contentGif = $(".gif");
+  var contentButton = $("button");
+  contentGif.attr("src", "https://giphy.com/embed/3oEjI0maaCZA8w75HW");
+  contentText.text("Loser");
+  contentButton.text("I accept that I am a loser");
+
   setTimeout(function() {
     $(".popup, .popup-content").addClass("active");
   }, 750);
@@ -120,7 +127,7 @@ function youWin() {
   var contentGif = $(".gif");
   var contentButton = $("button");
   contentGif.attr("src", "https://giphy.com/embed/3o7bu57lYhUEFiYDSM");
-  contentText.text("Winner popup");
+  contentText.text("Winner");
   contentButton.text("I am a winner");
   setTimeout(function() {
     $(".popup, .popup-content").addClass("active");
@@ -147,6 +154,11 @@ function switchPlayer() {
   j = 0;
   position = board[i][j];
 
+  // end game 
+  if (scoreArray[0] === 10 || scoreArray[1] === 10 ) {
+    alert("this is the end");
+  }
+  else {
   if (currentPlayer === 1) {
     currentPlayer = 0;
     scoreCell = $("#score-player1");
@@ -158,4 +170,5 @@ function switchPlayer() {
     $("#game_board").empty();
     matrixCreate(board);
   }
+  }; 
 }
