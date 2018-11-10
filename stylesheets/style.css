@@ -26,7 +26,7 @@ html {
   padding: 0px;
   border: 1px solid black;
   display: inline-block;
-  background-color: #c5d6e1;
+  background-color: #425C77;
 }
 
 
@@ -39,33 +39,33 @@ html {
 
 .explosion {
   background-image: url("../images/explosion2.gif")!important;
-  background-color: red!important;
+  background-color: #E45852!important;
   background-size: 80px;  
   background-repeat: no-repeat;
   background-position: center;
 }
 .all-red {
-  background-color: red!important;
+  background-color: #E45852!important;
 }
 
 .all-green {
-  background-color: green!important;
+  background-color: #6FAD83!important;
 } 
 
 .hidden {
-  background-color: #c5d6e1!important;
+  background-color: #425C77!important;
   background-image: none!important;
 }
 
 .light {
-  background-image: url("../images/end-point.png");
+  background-image: url("../images/start-point.png");  
   background-size: 100px;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .bomb.used {
-  background-color: blue!important;
+  background-color: #03B4FE!important;
   background-image: url("../images/start-point.png");
   background-size: 30px;
   background-position: center;
@@ -73,7 +73,7 @@ html {
 }
 
 .used {
-  background-color: blue;
+  background-color: #03B4FE;
   background-image: url("../images/start-point.png");
   background-size: 30px;
   background-position: center;
