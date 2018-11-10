@@ -64,12 +64,12 @@ var matrixCreate = board => {
     $(".light").addClass("hidden");
     setTimeout(function() {
       $(".light").removeClass("hidden");
-    }, 2000);
+    }, 1000);
 
     // hide bombs after 5sec
     setTimeout(function() {
       $(".bomb").addClass("hidden");
-    }, 2000);
+    }, 1000);
   }
 };
 
@@ -99,7 +99,7 @@ function youLose() {
   // Show the loser popup
   setTimeout(function() {
     $(".popup, .popup-content").addClass("active");
-  }, 1000);
+  }, 750);
 }
 
 function youWin() {
@@ -124,7 +124,7 @@ function youWin() {
   contentButton.text("I am a winner");
   setTimeout(function() {
     $(".popup, .popup-content").addClass("active");
-  }, 1000);
+  }, 750);
 }
 
 function checkPath() {
