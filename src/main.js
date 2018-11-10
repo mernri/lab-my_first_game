@@ -2,9 +2,10 @@
 var bomb = "bomb";
 var light = "light";
 var free = "free";
-var currentPlayer = 1;
+var currentPlayer = 0;
 var scoreCell = $("#score-player1");
-var score = 0;
+var scoreArray = [0,0];
+
 
 var board = [
   [free, free, free, bomb, bomb],
@@ -112,8 +113,8 @@ function youWin() {
     .addClass("all-green");
   $(".bomb").removeClass("hidden");
   // edit the score
-  score = score + 1;
-  scoreCell.text(score);
+  scoreArray[currentPlayer]++;
+  scoreCell.text(scoreArray[currentPlayer]);
   // show the winner popup
   var contentText = $(".title");
   var contentGif = $(".gif");
@@ -147,13 +148,13 @@ function switchPlayer() {
   position = board[i][j];
 
   if (currentPlayer === 1) {
-    currentPlayer = 2;
-    scoreCell = $("#score-player2");
+    currentPlayer = 0;
+    scoreCell = $("#score-player1");
     $("#game_board").empty();
     matrixCreate(board);
   } else {
     currentPlayer = 1;
-    scoreCell = $("#score-player1");
+    scoreCell = $("#score-player2");
     $("#game_board").empty();
     matrixCreate(board);
   }
